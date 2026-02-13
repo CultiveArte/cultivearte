@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = { darkMode: 'class' } </script>
+    <style>
+        /* Animação suave para entrada dos blocos */
+        .block-enter {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+
+    <main class="container mx-auto max-w-md md:max-w-2xl bg-gray-50 dark:bg-gray-900 min-h-screen p-6">
+        
+        <!-- Cabeçalho do Admin -->
+        <div class="flex items-center justify-between mb-8 pt-4">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    Painel Admin
+                </h1>
+                <p class="text-xs text-gray-500 font-mono mt-1">v2.5.0-blocks</p>
+            </div>
+            <!-- O botão Voltar aponta para index.html para ser interceptado pelo script -->
+            <a href="index.html" class="px-4 py-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium transition-colors shadow-sm text-gray-700 dark:text-gray-300">
+                Sair
+            </a>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-xs uppercase font-bold">Usuários</span>
+                    <span class="text-green-500 bg-green-100 dark:bg-green-900/30 text-[10px] px-2 py-0.5 rounded-full">+12%</span>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">1,204</h3>
+                <div class="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                    <div class="bg-indigo-500 h-full w-2/3 rounded-full"></div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-xs uppercase font-bold">Receita</span>
+                    <span class="text-blue-500 bg-blue-100 dark:bg-blue-900/30 text-[10px] px-2 py-0.5 rounded-full">Hoje</span>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">R$ 4k</h3>
+                <div class="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                    <div class="bg-green-500 h-full w-1/2 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Configurações SISTEMA -->
+        <div class="space-y-4 mb-8">
+            <h4 class="font-bold text-gray-800 dark:text-white text-sm uppercase tracking-wider ml-1">Sistema</h4>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Modo Manutenção</p>
+                            <p class="text-xs text-gray-500">Desativa acesso público</p>
+                        </div>
+                    </div>
+                    <button class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full relative transition-colors focus:outline-none">
+                        <div class="w-4 h-4 bg-white rounded-full absolute top-1 left-1 shadow-sm transition-transform"></div>
+                    </button>
+                </div>
+                
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Notificações Push</p>
+                            <p class="text-xs text-gray-500">Alertas globais ativos</p>
+                        </div>
+                    </div>
+                    <button class="w-11 h-6 bg-green-500 rounded-full relative transition-colors focus:outline-none">
+                        <div class="w-4 h-4 bg-white rounded-full absolute top-1 right-1 shadow-sm transition-transform"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção CONTEÚDO -->
+        <div class="space-y-4">
+            <h4 class="font-bold text-gray-800 dark:text-white text-sm uppercase tracking-wider ml-1">Conteúdo</h4>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-5 space-y-5">
+                
+                <!-- Metadados Básicos -->
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Título Principal</label>
+                        <input type="text" placeholder="Ex: O Futuro do Cinema" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Tag</label>
+                            <input type="text" placeholder="Ex: CINEMA" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Autor</label>
+                            <input type="text" placeholder="Ex: cultive" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">URL Imagem de Capa</label>
+                        <input type="url" placeholder="https://..." class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <hr class="border-gray-100 dark:border-gray-700 my-4">
+
+                <!-- NOVO EDITOR DE BLOCOS -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300">Corpo do Artigo</h5>
+                    
+                    <!-- Container de Blocos -->
+                    <div id="blocks-container" class="space-y-3 min-h-[50px]">
+                        <!-- Blocos serão inseridos aqui -->
+                    </div>
+
+                    <!-- Botão Adicionar e Menu -->
+                    <div class="relative pt-2">
+                        <button type="button" onclick="toggleBlockMenu()" class="flex items-center justify-center w-full py-4 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl text-gray-400 hover:text-indigo-500 hover:border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all group focus:outline-none">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-indigo-500 text-gray-500 group-hover:text-white flex items-center justify-center transition-colors mr-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </div>
+                            <span class="font-medium text-sm">Adicionar Bloco de Conteúdo</span>
+                        </button>
+
+                        <!-- Menu de Opções (Dropdown) -->
+                        <div id="block-menu" class="hidden absolute bottom-full left-0 right-0 mb-2 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-20 transform transition-all origin-bottom">
+                            <div class="p-2 grid grid-cols-1 sm:grid-cols-2 gap-1">
+                                <!-- Opção: Subtítulo H2 -->
+                                <button onclick="addBlock('h2')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
+                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600">
+                                        <span class="font-bold text-sm">H2</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Subtítulo</span>
+                                        <span class="block text-xs text-gray-400">Título de seção médio</span>
+                                    </div>
+                                </button>
+
+                                <!-- Opção: Parágrafo -->
+                                <button onclick="addBlock('p')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
+                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600">
+                                        <span class="font-serif text-sm">¶</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Parágrafo</span>
+                                        <span class="block text-xs text-gray-400">Texto corrido simples</span>
+                                    </div>
+                                </button>
+
+                                <!-- Opção: Citação -->
+                                <button onclick="addBlock('quote')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
+                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/50 group-hover:text-purple-600">
+                                        <span class="italic font-serif">“ ”</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Citação</span>
+                                        <span class="block text-xs text-gray-400">Destaque uma frase</span>
+                                    </div>
+                                </button>
+
+                                <!-- Opção: Imagem -->
+                                <button onclick="addBlock('image')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
+                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-pink-100 dark:group-hover:bg-pink-900/50 group-hover:text-pink-600">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Imagem</span>
+                                        <span class="block text-xs text-gray-400">Foto com legenda</span>
+                                    </div>
+                                </button>
+
+                                <!-- Opção: Vídeo -->
+                                <button onclick="addBlock('video')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
+                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-red-100 dark:group-hover:bg-red-900/50 group-hover:text-red-600">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21
