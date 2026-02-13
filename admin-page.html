@@ -6,20 +6,10 @@
     <title>Painel Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> tailwind.config = { darkMode: 'class' } </script>
-    <style>
-        /* Animação suave para entrada dos blocos */
-        .block-enter {
-            animation: slideUp 0.3s ease-out forwards;
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </head>
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
 
-    <main class="container mx-auto max-w-md md:max-w-2xl bg-gray-50 dark:bg-gray-900 min-h-screen p-6">
+    <main class="container mx-auto max-w-md md:max-w-2xl bg-gray-50 dark:bg-gray-900 min-h-screen p-6 pb-24">
         
         <!-- Cabeçalho do Admin -->
         <div class="flex items-center justify-between mb-8 pt-4">
@@ -28,9 +18,8 @@
                     <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
                     Painel Admin
                 </h1>
-                <p class="text-xs text-gray-500 font-mono mt-1">v2.5.0-blocks</p>
+                <p class="text-xs text-gray-500 font-mono mt-1">v2.5.0-beta</p>
             </div>
-            <!-- O botão Voltar aponta para index.html para ser interceptado pelo script -->
             <a href="index.html" class="px-4 py-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium transition-colors shadow-sm text-gray-700 dark:text-gray-300">
                 Sair
             </a>
@@ -79,7 +68,6 @@
                         <div class="w-4 h-4 bg-white rounded-full absolute top-1 left-1 shadow-sm transition-transform"></div>
                     </button>
                 </div>
-                
                 <div class="flex items-center justify-between p-4">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
@@ -129,72 +117,160 @@
 
                 <hr class="border-gray-100 dark:border-gray-700 my-4">
 
-                <!-- NOVO EDITOR DE BLOCOS -->
+                <!-- Editor de Corpo com Botão + -->
                 <div class="space-y-4">
                     <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300">Corpo do Artigo</h5>
                     
-                    <!-- Container de Blocos -->
-                    <div id="blocks-container" class="space-y-3 min-h-[50px]">
-                        <!-- Blocos serão inseridos aqui -->
+                    <!-- Container dos Blocos Dinâmicos -->
+                    <div id="editor-blocks" class="space-y-4 min-h-[100px]">
+                        <!-- Exemplo de bloco inicial (parágrafo vazio) -->
+                        <div class="relative group">
+                            <textarea rows="3" placeholder="Digite seu parágrafo..." class="w-full bg-transparent border-l-2 border-transparent focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-gray-300 transition-colors p-2 resize-none"></textarea>
+                            <button onclick="this.parentElement.remove()" class="absolute -right-8 top-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                        </div>
                     </div>
 
-                    <!-- Botão Adicionar e Menu -->
-                    <div class="relative pt-2">
-                        <button type="button" onclick="toggleBlockMenu()" class="flex items-center justify-center w-full py-4 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl text-gray-400 hover:text-indigo-500 hover:border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all group focus:outline-none">
-                            <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-indigo-500 text-gray-500 group-hover:text-white flex items-center justify-center transition-colors mr-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                            </div>
-                            <span class="font-medium text-sm">Adicionar Bloco de Conteúdo</span>
+                    <!-- Botão de Adicionar (+) -->
+                    <div class="relative flex justify-center py-4">
+                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div class="w-full border-t border-gray-100 dark:border-gray-700 border-dashed"></div>
+                        </div>
+                        
+                        <!-- Botão + -->
+                        <button id="add-block-btn" onclick="toggleBlockMenu()" class="relative flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg transition-transform hover:scale-110 focus:outline-none z-10 group">
+                            <svg id="plus-icon" class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </button>
 
-                        <!-- Menu de Opções (Dropdown) -->
-                        <div id="block-menu" class="hidden absolute bottom-full left-0 right-0 mb-2 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-20 transform transition-all origin-bottom">
-                            <div class="p-2 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                                <!-- Opção: Subtítulo H2 -->
-                                <button onclick="addBlock('h2')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
-                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600">
-                                        <span class="font-bold text-sm">H2</span>
-                                    </div>
-                                    <div>
-                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Subtítulo</span>
-                                        <span class="block text-xs text-gray-400">Título de seção médio</span>
-                                    </div>
-                                </button>
+                        <!-- Menu Flutuante -->
+                        <div id="block-menu" class="hidden absolute top-14 bg-white dark:bg-gray-800 shadow-2xl rounded-xl border border-gray-100 dark:border-gray-700 py-2 w-56 z-20 flex-col animate-fade-in origin-top">
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 rotate-45 border-l border-t border-gray-100 dark:border-gray-700"></div>
+                            
+                            <p class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700 mb-1">Adicionar Elemento</p>
+                            
+                            <button onclick="addBlock('h2')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded text-xs font-bold">H2</span> 
+                                Subtítulo
+                            </button>
+                            <button onclick="addBlock('quote')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded text-xs font-serif italic font-bold">“ ”</span> 
+                                Citação (Quote)
+                            </button>
+                            <button onclick="addBlock('p')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded text-xs font-serif">¶</span> 
+                                Parágrafo
+                            </button>
+                            <button onclick="addBlock('image')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </span> 
+                                Imagem
+                            </button>
+                            <button onclick="addBlock('video')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 rounded">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </span> 
+                                Vídeo
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-                                <!-- Opção: Parágrafo -->
-                                <button onclick="addBlock('p')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
-                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600">
-                                        <span class="font-serif text-sm">¶</span>
-                                    </div>
-                                    <div>
-                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Parágrafo</span>
-                                        <span class="block text-xs text-gray-400">Texto corrido simples</span>
-                                    </div>
-                                </button>
+                <!-- Botão Salvar -->
+                <button class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 mt-4">
+                    Publicar Conteúdo
+                </button>
 
-                                <!-- Opção: Citação -->
-                                <button onclick="addBlock('quote')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
-                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/50 group-hover:text-purple-600">
-                                        <span class="italic font-serif">“ ”</span>
-                                    </div>
-                                    <div>
-                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Citação</span>
-                                        <span class="block text-xs text-gray-400">Destaque uma frase</span>
-                                    </div>
-                                </button>
+            </div>
+            
+            <!-- Log -->
+            <div class="bg-black/5 dark:bg-white/5 rounded-xl p-4 font-mono text-xs text-gray-500 mt-6">
+                <p class="mb-1">> System check initiated...</p>
+                <p class="mb-1 text-green-600 dark:text-green-400">> Ready for new content blocks.</p>
+            </div>
+        </div>
 
-                                <!-- Opção: Imagem -->
-                                <button onclick="addBlock('image')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
-                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-pink-100 dark:group-hover:bg-pink-900/50 group-hover:text-pink-600">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">Imagem</span>
-                                        <span class="block text-xs text-gray-400">Foto com legenda</span>
-                                    </div>
-                                </button>
+    </main>
 
-                                <!-- Opção: Vídeo -->
-                                <button onclick="addBlock('video')" class="flex items-center w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-left group">
-                                    <div class="w-8 h-8 rounded bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 flex items-center justify-center mr-3 group-hover:bg-red-100 dark:group-hover:bg-red-900/50 group-hover:text-red-600">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21
+    <script>
+        // Função para mostrar/esconder o menu de blocos
+        function toggleBlockMenu() {
+            const menu = document.getElementById('block-menu');
+            const icon = document.getElementById('plus-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.add('rotate-45'); // Gira o + para virar um X
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('rotate-45');
+            }
+        }
+
+        // Função para adicionar blocos
+        function addBlock(type) {
+            const container = document.getElementById('editor-blocks');
+            let blockHtml = '';
+
+            // Botão de deletar reutilizável
+            const deleteBtn = `<button onclick="this.parentElement.remove()" class="absolute -right-8 top-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>`;
+
+            if (type === 'h2') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <input type="text" placeholder="Digite o subtítulo (H2)..." class="w-full text-xl font-bold bg-transparent border-b border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-white transition-colors py-2">
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'p') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <textarea rows="3" placeholder="Escreva seu parágrafo..." class="w-full bg-transparent border-l-2 border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-gray-300 transition-colors p-2 resize-none"></textarea>
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'quote') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <div class="flex">
+                            <div class="w-1 bg-indigo-500 rounded-full mr-3 shrink-0"></div>
+                            <textarea rows="2" placeholder="Digite a citação de destaque..." class="w-full bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 italic text-gray-700 dark:text-gray-300 focus:ring-1 focus:ring-indigo-500 outline-none resize-none"></textarea>
+                        </div>
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'image') {
+                blockHtml = `
+                    <div class="relative group p-4 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900 animate-fade-in">
+                        <div class="flex gap-2 mb-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Imagem</span>
+                        </div>
+                        <input type="url" placeholder="URL da imagem (ex: https://...)" class="w-full mb-2 p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none">
+                        <input type="text" placeholder="Legenda da imagem..." class="w-full p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none italic text-gray-600 dark:text-gray-400">
+                        <button onclick="this.parentElement.remove()" class="absolute -right-3 -top-3 bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-full p-1 text-gray-400 hover:text-red-500 transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                `;
+            } else if (type === 'video') {
+                blockHtml = `
+                    <div class="relative group p-4 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900 animate-fade-in">
+                        <div class="flex gap-2 mb-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Vídeo</span>
+                        </div>
+                        <input type="url" placeholder="URL do vídeo (YouTube, Vimeo)..." class="w-full p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none">
+                        <button onclick="this.parentElement.remove()" class="absolute -right-3 -top-3 bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-full p-1 text-gray-400 hover:text-red-500 transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                `;
+            }
+
+            // Inserir o novo bloco no final do container
+            container.insertAdjacentHTML('beforeend', blockHtml);
+            
+            // Fechar o menu
+            toggleBlockMenu();
+        }
+    </script>
+</body>
+</html>
