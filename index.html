@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout App Mobile</title>
-
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Configuração do Tailwind -->
     <script>
         tailwind.config = {
@@ -20,7 +20,7 @@
             font-family: system-ui, -apple-system, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
-
+        
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -36,7 +36,7 @@
         .animate-fade-in {
             animation: fadeInUp 0.5s ease-out forwards;
         }
-
+        
         .hidden-ui {
             display: none !important;
         }
@@ -57,7 +57,7 @@
         </button>
     </header>
 
-
+    
     <!-- ==============================
          MENU LATERAL (SIDEBAR)
          ============================== -->
@@ -89,20 +89,20 @@
         </div>
     </aside>
 
+
     <!-- SEARCH OVERLAY -->
     <div id="search-overlay" class="fixed inset-0 z-[60] hidden">
         <div id="search-backdrop" onclick="toggleSearch()" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0 duration-300"></div>
         <div id="search-panel" class="absolute top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-2xl transform -translate-y-full transition-transform duration-300 ease-out rounded-b-3xl border-b border-gray-200 dark:border-gray-800">
             <div class="pt-8 pb-6 px-4 container mx-auto max-w-md md:max-w-2xl relative">
-
+                
                 <div class="relative">
                     <input type="text" id="search-input" placeholder="O que você procura?" class="w-full pl-12 pr-12 py-4 rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-none focus:ring-2 focus:ring-blue-500 outline-none text-lg shadow-inner placeholder-gray-400 dark:placeholder-gray-500 transition-all">
-
-                    <!-- Search Submit Button (Atualizado: Agora é um botão) -->
+                    
                     <button id="search-submit-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-blue-500 transition-colors focus:outline-none p-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </button>
-
+                    
                     <button onclick="toggleSearch()" class="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-400 transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
@@ -123,7 +123,7 @@
 
     <!-- Main Content Area -->
     <main id="main-area" class="pt-20 pb-24 px-4 container mx-auto max-w-md md:max-w-2xl transition-colors duration-300 relative min-h-screen">
-
+        
         <!-- Fullscreen Button -->
         <button id="fullscreen-btn" class="fixed top-20 right-4 z-30 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all transform hover:scale-100 active:scale-90 focus:outline-none scale-85 origin-top-right">
              <svg id="icon-expand" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
@@ -166,9 +166,9 @@
     <!-- Bottom Bar -->
     <nav id="app-bottom-nav" class="fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center z-40 pb-safe transition-colors duration-300">
         <a href="#" onclick="restoreFeed(); return false;" class="flex flex-col items-center justify-center w-full h-full text-blue-600 dark:text-blue-400 focus:outline-none"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="text-[10px] font-medium">Início</span></a>
-
+        
         <button id="search-trigger" onclick="toggleSearch()" class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors focus:outline-none"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="text-[10px] font-medium">Buscar</span></button>
-
+        
         <button class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors focus:outline-none"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="text-[10px] font-medium">Ajustes</span></button>
     </nav>
 
@@ -192,7 +192,6 @@
             }
         };
 
-        // Função para processar a busca (NOVO)
         function handleSearch() {
             const input = document.getElementById('search-input');
             const query = input.value.trim();
@@ -202,12 +201,11 @@
                 loadArticle('admin-page.html'); // Carrega a página admin
                 input.value = ''; // Limpa o campo
             } else {
-                // Aqui você pode adicionar lógica para busca real
                 console.log('Buscando por:', query);
             }
         }
 
-        // === RESTO DA LÓGICA (Mantida) ===
+        // === RESTO DA LÓGICA ===
         window.restoreFeed = function() {
             document.getElementById('feed-view').classList.remove('hidden');
             const articleContainer = document.getElementById('article-container');
@@ -218,13 +216,19 @@
             window.scrollTo(0, 0);
         };
 
+        // Função loadArticle CORRIGIDA para executar Scripts
         window.loadArticle = function(url) {
             fetch(url)
                 .then(response => response.text())
                 .then(html => {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // 1. Extrai o conteúdo do main
                     const content = doc.querySelector('main').innerHTML;
+                    
+                    // 2. Extrai os scripts do documento carregado
+                    const scripts = doc.querySelectorAll('script');
 
                     document.getElementById('feed-view').classList.add('hidden');
                     const articleContainer = document.getElementById('article-container');
@@ -242,6 +246,24 @@
                             restoreFeed();
                         };
                     });
+
+                    // 3. Executa os scripts manualmente
+                    scripts.forEach(script => {
+                        // Ignora scripts do Tailwind ou configurações que já existem no index
+                        if (script.src.includes('tailwindcss') || script.innerText.includes('tailwind.config')) {
+                            return;
+                        }
+
+                        const newScript = document.createElement("script");
+                        if (script.src) {
+                            newScript.src = script.src;
+                        } else {
+                            newScript.textContent = script.innerText;
+                        }
+                        // Adiciona ao body para executar
+                        document.body.appendChild(newScript);
+                    });
+
                     window.scrollTo(0, 0);
                 })
                 .catch(err => {
@@ -274,7 +296,6 @@
             function updateFullscreenIcon() { if (document.fullscreenElement) { iconExpand.classList.add('hidden'); iconCompress.classList.remove('hidden'); } else { iconExpand.classList.remove('hidden'); iconCompress.classList.add('hidden'); } }
             if (fullscreenBtn) { fullscreenBtn.addEventListener('click', toggleFullscreen); document.addEventListener('fullscreenchange', updateFullscreenIcon); }
 
-            // === LÓGICA DE EVENTOS DE BUSCA (NOVO) ===
             document.getElementById('search-input').addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     handleSearch();
