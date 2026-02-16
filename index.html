@@ -57,38 +57,20 @@
         </button>
     </header>
 
-    
-    <!-- ==============================
-         MENU LATERAL (SIDEBAR)
-         ============================== -->
+    <!-- Sidebar -->
     <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0 backdrop-blur-sm"></div>
-
     <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-900 shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-r border-gray-200 dark:border-gray-800">
-        <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-800 font-bold text-lg text-gray-800 dark:text-white">
-            Navegação
-        </div>
-
+        <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-800 font-bold text-lg text-gray-800 dark:text-white">Navegação</div>
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto no-scrollbar">
-            <a href="#" class="block px-4 py-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 font-medium transition-colors">Início</a>
+            <a href="#" onclick="restoreFeed(); return false;" class="block px-4 py-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 font-medium transition-colors">Início</a>
             <a href="#" class="block px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors">Minha Conta</a>
-            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors">Notificações</a>
-            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors">Favoritos</a>
-            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors">Ajuda</a>
-
             <button id="theme-toggle" class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors mt-4 border border-gray-200 dark:border-gray-700">
                 <svg id="icon-sun" class="w-5 h-5 mr-3 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 <svg id="icon-moon" class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 <span id="theme-text">Mudar para Claro</span>
             </button>
         </nav>
-
-        <div class="p-4 border-t border-gray-200 dark:border-gray-800">
-            <button class="w-full text-left px-4 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
-                Sair
-            </button>
-        </div>
     </aside>
-
 
     <!-- SEARCH OVERLAY -->
     <div id="search-overlay" class="fixed inset-0 z-[60] hidden">
@@ -134,7 +116,7 @@
         <div id="feed-view">
             <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm mb-6 border border-gray-100 dark:border-gray-800 transition-colors">
                 <h1 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">Olá, Usuário!</h1>
-                <p class="text-gray-500 dark:text-gray-400">Tente buscar por <span class="font-mono bg-gray-200 dark:bg-gray-800 px-1 rounded text-xs text-pink-500">/admin-page</span></p>
+                <p class="text-gray-500 dark:text-gray-400">Bem-vindo ao seu feed. Role para baixo para descobrir novos conteúdos.</p>
             </div>
 
             <div id="feed-container" class="space-y-4">
@@ -196,7 +178,7 @@
             const input = document.getElementById('search-input');
             const query = input.value.trim();
 
-            if (query === '/admin-page') {
+            if (query === '.admin.page') {
                 toggleSearch(); // Fecha o overlay
                 loadArticle('admin-page.html'); // Carrega a página admin
                 input.value = ''; // Limpa o campo
