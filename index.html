@@ -57,6 +57,7 @@
         </button>
     </header>
 
+    
     <!-- ==============================
          MENU LATERAL (SIDEBAR)
          ============================== -->
@@ -87,7 +88,6 @@
             </button>
         </div>
     </aside>
-
 
     <!-- SEARCH OVERLAY -->
     <div id="search-overlay" class="fixed inset-0 z-[60] hidden">
@@ -136,46 +136,34 @@
                 <p class="text-gray-500 dark:text-gray-400">Bem-vindo ao seu feed. Role para baixo para descobrir novos conteúdos.</p>
             </div>
 
-            <!-- DROPDOWN: Minhas Atividades (Novo Container para Itens Antigos e Estáticos) -->
+            <!-- DROPDOWN: Minhas Atividades -->
             <div class="mb-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-sm">
-                <!-- Cabeçalho do Dropdown -->
                 <button onclick="toggleActivities()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
                     <span class="font-bold text-gray-800 dark:text-white flex items-center gap-2">
                         <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                         Minhas Atividades
-                        <!-- Badge de Notificação -->
                         <span class="flex items-center justify-center w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full shadow-sm ml-1">+2</span>
                     </span>
                     <svg id="activities-chevron" class="w-5 h-5 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                
-                <!-- Conteúdo do Dropdown -->
                 <div id="activities-list" class="hidden p-4 space-y-4 border-t border-gray-100 dark:border-gray-800">
-                    
-                    <!-- Item Estático 1 -->
                     <div class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center space-x-4 transition-colors">
                         <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                         </div>
                         <div><h3 class="font-semibold text-gray-800 dark:text-gray-100">Atividade Recente</h3><p class="text-sm text-gray-400 dark:text-gray-500">Atualizado há 2 min</p></div>
                     </div>
-                    
-                    <!-- Item Estático 2 -->
                     <div class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center space-x-4 transition-colors">
                         <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center text-green-600 dark:text-green-400">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <div><h3 class="font-semibold text-gray-800 dark:text-gray-100">Tarefa Concluída</h3><p class="text-sm text-gray-400 dark:text-gray-500">Projeto Design System</p></div>
                     </div>
-
-                    <!-- Itens antigos dinâmicos (1 e 2) serão inseridos AQUI via JS -->
                 </div>
             </div>
 
-            <!-- Feed Principal (Para itens novos >= 3) -->
-            <div id="feed-container" class="space-y-4">
-                <!-- Apenas itens do tipo Artigo (Item #3 em diante) entrarão aqui -->
-            </div>
+            <!-- Feed Principal -->
+            <div id="feed-container" class="space-y-4"></div>
 
             <div id="loader" class="py-8 flex justify-center items-center">
                 <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400"></div>
@@ -188,86 +176,49 @@
 
     </main>
 
-    <!-- Bottom Bar (Atualizada) -->
+    <!-- Bottom Bar -->
     <nav id="app-bottom-nav" class="fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center z-40 pb-safe transition-colors duration-300">
-        
-        <!-- Ícone INÍCIO (Esquerda) -->
         <a href="#" onclick="restoreFeed(); return false;" class="flex flex-col items-center justify-center w-full h-full text-blue-600 dark:text-blue-400 focus:outline-none hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-            </svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
         </a>
-        
-        <!-- Ícone MAPA (Centro) -->
-        <button class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
-            </svg>
+        <button onclick="loadArticle('mapa.html'); return false;" class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
         </button>
-        
-        <!-- Ícone BUSCAR (Direita) -->
         <button id="search-trigger" onclick="toggleSearch()" class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </button>
     </nav>
 
     <!-- JS Logic -->
     <script>
-        // === LÓGICA DE ATIVIDADES (ACCORDION) ===
         window.toggleActivities = function() {
             const list = document.getElementById('activities-list');
             const chevron = document.getElementById('activities-chevron');
-            
-            if (list.classList.contains('hidden')) {
-                list.classList.remove('hidden');
-                chevron.classList.add('rotate-180');
-            } else {
-                list.classList.add('hidden');
-                chevron.classList.remove('rotate-180');
-            }
+            if (list.classList.contains('hidden')) { list.classList.remove('hidden'); chevron.classList.add('rotate-180'); } else { list.classList.add('hidden'); chevron.classList.remove('rotate-180'); }
         };
 
-        // === LÓGICA DE BUSCA ===
         window.toggleSearch = function() {
             const overlay = document.getElementById('search-overlay');
             const backdrop = document.getElementById('search-backdrop');
             const panel = document.getElementById('search-panel');
             const input = document.getElementById('search-input');
-
-            if (overlay.classList.contains('hidden')) {
-                overlay.classList.remove('hidden');
-                setTimeout(() => { backdrop.classList.remove('opacity-0'); panel.classList.remove('-translate-y-full'); }, 10);
-                setTimeout(() => { input.focus(); }, 300);
-            } else {
-                backdrop.classList.add('opacity-0');
-                panel.classList.add('-translate-y-full');
-                setTimeout(() => { overlay.classList.add('hidden'); }, 300);
-            }
+            if (overlay.classList.contains('hidden')) { overlay.classList.remove('hidden'); setTimeout(() => { backdrop.classList.remove('opacity-0'); panel.classList.remove('-translate-y-full'); }, 10); setTimeout(() => { input.focus(); }, 300); } else { backdrop.classList.add('opacity-0'); panel.classList.add('-translate-y-full'); setTimeout(() => { overlay.classList.add('hidden'); }, 300); }
         };
 
         function handleSearch() {
             const input = document.getElementById('search-input');
             const query = input.value.trim();
-
-            if (query === '.admin.page') {
-                toggleSearch();
-                loadArticle('admin-page.html');
-                input.value = '';
-            } else {
-                console.log('Buscando por:', query);
-            }
+            if (query === '.admin.page') { toggleSearch(); loadArticle('admin-page.html'); input.value = ''; } else { console.log('Buscando por:', query); }
         }
 
-        // === RESTO DA LÓGICA ===
         window.restoreFeed = function() {
             document.getElementById('feed-view').classList.remove('hidden');
             const articleContainer = document.getElementById('article-container');
             articleContainer.classList.add('hidden');
             articleContainer.innerHTML = '';
             const main = document.getElementById('main-area');
-            main.classList.add('px-4');
+            main.classList.add('px-4', 'pt-20');
+            main.classList.remove('pt-16');
             window.scrollTo(0, 0);
         };
 
@@ -284,8 +235,11 @@
                     const articleContainer = document.getElementById('article-container');
                     articleContainer.innerHTML = content;
                     articleContainer.classList.remove('hidden');
+                    
                     const main = document.getElementById('main-area');
-                    main.classList.remove('px-4');
+                    // AJUSTE DE ALINHAMENTO: Remove padding lateral e ajusta topo para casar com header (64px)
+                    main.classList.remove('px-4', 'pt-20');
+                    main.classList.add('pt-16');
 
                     const backLinks = articleContainer.querySelectorAll('a[href="index.html"]');
                     backLinks.forEach(link => {
@@ -298,15 +252,9 @@
                     });
 
                     scripts.forEach(script => {
-                        if (script.src.includes('tailwindcss') || script.innerText.includes('tailwind.config')) {
-                            return;
-                        }
+                        if (script.src.includes('tailwindcss') || script.innerText.includes('tailwind.config')) return;
                         const newScript = document.createElement("script");
-                        if (script.src) {
-                            newScript.src = script.src;
-                        } else {
-                            newScript.textContent = script.innerText;
-                        }
+                        if (script.src) newScript.src = script.src; else newScript.textContent = script.innerText;
                         document.body.appendChild(newScript);
                     });
 
@@ -342,17 +290,12 @@
             function updateFullscreenIcon() { if (document.fullscreenElement) { iconExpand.classList.add('hidden'); iconCompress.classList.remove('hidden'); } else { iconExpand.classList.remove('hidden'); iconCompress.classList.add('hidden'); } }
             if (fullscreenBtn) { fullscreenBtn.addEventListener('click', toggleFullscreen); document.addEventListener('fullscreenchange', updateFullscreenIcon); }
 
-            document.getElementById('search-input').addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    handleSearch();
-                }
-            });
+            document.getElementById('search-input').addEventListener('keypress', function (e) { if (e.key === 'Enter') handleSearch(); });
             document.getElementById('search-submit-btn').addEventListener('click', handleSearch);
 
-            // === ROLAGEM INFINITA E LÓGICA DE DISTRIBUIÇÃO ===
             let itemCount = 0;
-            const feedContainer = document.getElementById('feed-container'); // Container para itens novos (>=3)
-            const activitiesList = document.getElementById('activities-list'); // Container para itens antigos (<3)
+            const feedContainer = document.getElementById('feed-container');
+            const activitiesList = document.getElementById('activities-list');
             const loader = document.getElementById('loader');
 
             function getCurrentDate() {
@@ -404,15 +347,7 @@
                     for (let i = 0; i < 5; i++) {
                         itemCount++;
                         const newItemHtml = createItem(itemCount);
-                        
-                        // Lógica de Distribuição:
-                        // Se for Item antigo (index < 3), coloca no dropdown
-                        // Se for Item novo (index >= 3), coloca no feed principal
-                        if (itemCount < 3) {
-                            activitiesList.insertAdjacentHTML('beforeend', newItemHtml);
-                        } else {
-                            feedContainer.insertAdjacentHTML('beforeend', newItemHtml);
-                        }
+                        if (itemCount < 3) { activitiesList.insertAdjacentHTML('beforeend', newItemHtml); } else { feedContainer.insertAdjacentHTML('beforeend', newItemHtml); }
                     }
                 }, 800);
             }
