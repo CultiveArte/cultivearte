@@ -3,76 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Impacto Visual do Item #3</title>
+    <title>Painel Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> tailwind.config = { darkMode: 'class' } </script>
-    <style> body { font-family: system-ui, -apple-system, sans-serif; transition: background-color 0.3s, color 0.3s; } .prose p { margin-bottom: 1.5em; line-height: 1.75; } </style>
 </head>
-<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
 
-    <main class="container mx-auto max-w-md md:max-w-2xl bg-white dark:bg-gray-950 min-h-screen shadow-2xl relative">
-        <div class="relative w-full aspect-[4/5] md:aspect-video">
-            <!-- Botão Voltar -->
-            <a href="index.html" class="absolute top-4 left-4 z-20 p-2 bg-black/30 hover:bg-black/50 backdrop-blur-md rounded-full text-white transition-colors border border-white/20">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    <main class="container mx-auto max-w-md md:max-w-2xl bg-gray-50 dark:bg-gray-900 min-h-screen p-6 pb-24">
+        
+        <!-- Cabeçalho do Admin -->
+        <div class="flex items-center justify-between mb-8 pt-4">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    Painel Admin
+                </h1>
+                <p class="text-xs text-gray-500 font-mono mt-1">v2.5.0-beta</p>
+            </div>
+            <a href="index.html" class="px-4 py-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium transition-colors shadow-sm text-gray-700 dark:text-gray-300">
+                Sair
             </a>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-xs uppercase font-bold">Usuários</span>
+                    <span class="text-green-500 bg-green-100 dark:bg-green-900/30 text-[10px] px-2 py-0.5 rounded-full">+12%</span>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">1,204</h3>
+                <div class="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                    <div class="bg-indigo-500 h-full w-2/3 rounded-full"></div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-xs uppercase font-bold">Receita</span>
+                    <span class="text-blue-500 bg-blue-100 dark:bg-blue-900/30 text-[10px] px-2 py-0.5 rounded-full">Hoje</span>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">R$ 4k</h3>
+                <div class="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                    <div class="bg-green-500 h-full w-1/2 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Configurações SISTEMA -->
+        <div class="space-y-4 mb-8">
+            <h4 class="font-bold text-gray-800 dark:text-white text-sm uppercase tracking-wider ml-1">Sistema</h4>
             
-            <!-- Imagem de Fundo -->
-            <img src="https://picsum.photos/800/800?random=3" alt="Capa do Artigo" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-            
-            <div class="absolute bottom-0 left-0 p-6 w-full z-10">
-                <span class="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white bg-indigo-600 rounded-full uppercase shadow-sm">CINEMA</span>
-                <h1 class="text-3xl font-bold text-white leading-tight drop-shadow-md mb-2">O Impacto Visual do Item #3 na Cinematografia Moderna</h1>
-                
-                <!-- Linha Autor + Compartilhar (Flexbox atualizado) -->
-                <div class="flex items-center justify-between mt-4">
-                    <!-- Grupo Autor -->
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden border border-white/30">
-                            <svg class="w-full h-full text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <div>
-                            <p class="text-sm font-semibold text-white">cultive</p>
-                            <p class="text-xs text-white/70">12 Out 2023 • 5 min de leitura</p>
+                            <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Modo Manutenção</p>
+                            <p class="text-xs text-gray-500">Desativa acesso público</p>
                         </div>
                     </div>
-
-                    <!-- Botão Compartilhar (Movido para cá) -->
-                    <button class="p-2 bg-black/30 hover:bg-black/50 backdrop-blur-md rounded-full text-white transition-colors border border-white/20">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                    <button class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full relative transition-colors focus:outline-none">
+                        <div class="w-4 h-4 bg-white rounded-full absolute top-1 left-1 shadow-sm transition-transform"></div>
+                    </button>
+                </div>
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Notificações Push</p>
+                            <p class="text-xs text-gray-500">Alertas globais ativos</p>
+                        </div>
+                    </div>
+                    <button class="w-11 h-6 bg-green-500 rounded-full relative transition-colors focus:outline-none">
+                        <div class="w-4 h-4 bg-white rounded-full absolute top-1 right-1 shadow-sm transition-transform"></div>
                     </button>
                 </div>
             </div>
         </div>
-        <article class="prose prose-lg prose-gray dark:prose-invert max-w-none px-6 py-8 text-gray-700 dark:text-gray-300 leading-relaxed">
-            <p class="font-medium text-xl leading-relaxed text-gray-900 dark:text-gray-100 mb-8 border-l-4 border-indigo-500 pl-4">A revolução visual trazida pelo Item #3 mudou completamente a forma como percebemos a narrativa visual em dispositivos móveis, criando uma ponte entre o cinema clássico e a era digital.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. A imersão proporcionada pela ausência de distrações na interface permite que o usuário foque puramente na essência da imagem.</p>
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">A Estética do Formato 1:1</h2>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. O formato quadrado, outrora restrito a câmeras de médio formato, retornou com força total.</p>
-            <div class="my-10 -mx-6 md:mx-0"><img src="https://picsum.photos/800/400?random=10" alt="Imagem secundária" class="w-full h-auto object-cover md:rounded-xl shadow-lg"><p class="text-xs text-center text-gray-500 mt-2 italic">Fig 1. Exemplo de composição visual simétrica.</p></div>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-3">Conclusão</h3>
-            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-        </article>
-        <div class="px-6 py-8 pb-12 border-t border-gray-100 dark:border-gray-800 mt-4 bg-gray-50/50 dark:bg-gray-900/50">
-            <div class="flex items-center justify-between mb-8">
-                <div class="flex items-center space-x-4">
-                    <button class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-gray-700"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="font-semibold">1.2k</span></button>
-                    <button class="p-2 text-gray-400 hover:text-blue-500 transition-colors bg-white dark:bg-gray-800 rounded-full shadow-sm border border-gray-100 dark:border-gray-700"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg></button>
+
+        <!-- Seção CONTEÚDO -->
+        <div class="space-y-4">
+            <h4 class="font-bold text-gray-800 dark:text-white text-sm uppercase tracking-wider ml-1">Conteúdo</h4>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-5 space-y-5">
+                
+                <!-- Metadados Básicos -->
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Título Principal</label>
+                        <input type="text" placeholder="Ex: O Futuro do Cinema" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Tag</label>
+                            <input type="text" placeholder="Ex: CINEMA" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Autor</label>
+                            <input type="text" placeholder="Ex: cultive" class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">URL Imagem de Capa</label>
+                        <input type="url" placeholder="https://..." class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
                 </div>
-                <div class="flex -space-x-2"><div class="w-8 h-8 rounded-full bg-blue-500 border-2 border-white dark:border-gray-900"></div><div class="w-8 h-8 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div><div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-white dark:border-gray-900"></div></div>
-            </div>
-            <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-white">Comentários (2)</h3>
-            <div class="space-y-4">
-                <div class="flex space-x-3">
-                    <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">A</div>
-                    <div><div class="bg-white dark:bg-gray-800 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-gray-700">Incrível análise! O formato quadrado realmente destaca mais no mobile.</div><span class="text-xs text-gray-400 ml-1 mt-1 block">Há 10 min</span></div>
+
+                <hr class="border-gray-100 dark:border-gray-700 my-4">
+
+                <!-- Editor de Corpo com Botão + -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300">Corpo do Artigo</h5>
+                    
+                    <!-- Container dos Blocos Dinâmicos -->
+                    <div id="editor-blocks" class="space-y-4 min-h-[100px]">
+                        <!-- Exemplo de bloco inicial (parágrafo vazio) -->
+                        <div class="relative group">
+                            <textarea rows="3" placeholder="Digite seu parágrafo..." class="w-full bg-transparent border-l-2 border-transparent focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-gray-300 transition-colors p-2 resize-none"></textarea>
+                            <button onclick="this.parentElement.remove()" class="absolute -right-8 top-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Adicionar (+) -->
+                    <div class="relative flex justify-center py-4">
+                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div class="w-full border-t border-gray-100 dark:border-gray-700 border-dashed"></div>
+                        </div>
+                        
+                        <!-- Botão + -->
+                        <button id="add-block-btn" onclick="toggleBlockMenu()" class="relative flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg transition-transform hover:scale-110 focus:outline-none z-10 group">
+                            <svg id="plus-icon" class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+
+                        <!-- Menu Flutuante -->
+                        <div id="block-menu" class="hidden absolute top-14 bg-white dark:bg-gray-800 shadow-2xl rounded-xl border border-gray-100 dark:border-gray-700 py-2 w-56 z-20 flex-col animate-fade-in origin-top">
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 rotate-45 border-l border-t border-gray-100 dark:border-gray-700"></div>
+                            
+                            <p class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700 mb-1">Adicionar Elemento</p>
+                            
+                            <button onclick="addBlock('h2')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded text-xs font-bold">H2</span> 
+                                Subtítulo
+                            </button>
+                            <button onclick="addBlock('quote')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded text-xs font-serif italic font-bold">“ ”</span> 
+                                Citação (Quote)
+                            </button>
+                            <button onclick="addBlock('p')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded text-xs font-serif">¶</span> 
+                                Parágrafo
+                            </button>
+                            <button onclick="addBlock('image')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </span> 
+                                Imagem
+                            </button>
+                            <button onclick="addBlock('video')" class="px-4 py-2.5 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center gap-3 transition-colors">
+                                <span class="w-6 h-6 flex items-center justify-center bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 rounded">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </span> 
+                                Vídeo
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Botão Salvar -->
+                <button class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 mt-4">
+                    Publicar Conteúdo
+                </button>
+
             </div>
-            <div class="h-8"></div>
+            
+            <!-- Log -->
+            <div class="bg-black/5 dark:bg-white/5 rounded-xl p-4 font-mono text-xs text-gray-500 mt-6">
+                <p class="mb-1">> System check initiated...</p>
+                <p class="mb-1 text-green-600 dark:text-green-400">> Ready for new content blocks.</p>
+            </div>
         </div>
+
     </main>
-    <script> if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); } else { document.documentElement.classList.add('dark'); } </script>
+
+    <script>
+        // Função para mostrar/esconder o menu de blocos
+        function toggleBlockMenu() {
+            const menu = document.getElementById('block-menu');
+            const icon = document.getElementById('plus-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.add('rotate-45'); // Gira o + para virar um X
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('rotate-45');
+            }
+        }
+
+        // Função para adicionar blocos
+        function addBlock(type) {
+            const container = document.getElementById('editor-blocks');
+            let blockHtml = '';
+
+            // Botão de deletar reutilizável
+            const deleteBtn = `<button onclick="this.parentElement.remove()" class="absolute -right-8 top-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>`;
+
+            if (type === 'h2') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <input type="text" placeholder="Digite o subtítulo (H2)..." class="w-full text-xl font-bold bg-transparent border-b border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-white transition-colors py-2">
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'p') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <textarea rows="3" placeholder="Escreva seu parágrafo..." class="w-full bg-transparent border-l-2 border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none placeholder-gray-400 dark:text-gray-300 transition-colors p-2 resize-none"></textarea>
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'quote') {
+                blockHtml = `
+                    <div class="relative group animate-fade-in">
+                        <div class="flex">
+                            <div class="w-1 bg-indigo-500 rounded-full mr-3 shrink-0"></div>
+                            <textarea rows="2" placeholder="Digite a citação de destaque..." class="w-full bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 italic text-gray-700 dark:text-gray-300 focus:ring-1 focus:ring-indigo-500 outline-none resize-none"></textarea>
+                        </div>
+                        ${deleteBtn}
+                    </div>
+                `;
+            } else if (type === 'image') {
+                blockHtml = `
+                    <div class="relative group p-4 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900 animate-fade-in">
+                        <div class="flex gap-2 mb-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Imagem</span>
+                        </div>
+                        <input type="url" placeholder="URL da imagem (ex: https://...)" class="w-full mb-2 p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none">
+                        <input type="text" placeholder="Legenda da imagem..." class="w-full p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none italic text-gray-600 dark:text-gray-400">
+                        <button onclick="this.parentElement.remove()" class="absolute -right-3 -top-3 bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-full p-1 text-gray-400 hover:text-red-500 transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                `;
+            } else if (type === 'video') {
+                blockHtml = `
+                    <div class="relative group p-4 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900 animate-fade-in">
+                        <div class="flex gap-2 mb-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Vídeo</span>
+                        </div>
+                        <input type="url" placeholder="URL do vídeo (YouTube, Vimeo)..." class="w-full p-2 text-sm bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 focus:border-indigo-500 outline-none">
+                        <button onclick="this.parentElement.remove()" class="absolute -right-3 -top-3 bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-full p-1 text-gray-400 hover:text-red-500 transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                `;
+            }
+
+            // Inserir o novo bloco no final do container
+            container.insertAdjacentHTML('beforeend', blockHtml);
+            
+            // Fechar o menu
+            toggleBlockMenu();
+        }
+    </script>
 </body>
 </html>
