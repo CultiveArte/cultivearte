@@ -44,20 +44,21 @@
 </head>
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- Header -->
-    <header id="app-header" class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 shadow-sm z-50 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <button id="menu-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+    <!-- Header (Altura alterada para h-[35px]) -->
+    <header id="app-header" class="fixed top-0 left-0 right-0 h-[35px] bg-white dark:bg-gray-900 shadow-sm z-50 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <!-- Botão Menu (Padding reduzido para p-1 para caber em 35px) -->
+        <button id="menu-btn" class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
             <svg class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
-        <div class="absolute left-1/2 transform -translate-x-1/2 font-bold text-xl text-blue-600 dark:text-blue-400 tracking-wide">
+        <div class="absolute left-1/2 transform -translate-x-1/2 font-bold text-lg text-blue-600 dark:text-blue-400 tracking-wide">
             MEU APP
         </div>
-        <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+        <!-- Botão Perfil (Padding reduzido para p-1) -->
+        <button class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
             <svg class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
         </button>
     </header>
-
-    
+ 
     <!-- ==============================
          MENU LATERAL (SIDEBAR)
          ============================== -->
@@ -88,6 +89,7 @@
             </button>
         </div>
     </aside>
+
 
     <!-- SEARCH OVERLAY -->
     <div id="search-overlay" class="fixed inset-0 z-[60] hidden">
@@ -121,7 +123,8 @@
     </div>
 
     <!-- Main Content Area -->
-    <main id="main-area" class="pt-20 pb-24 px-4 container mx-auto max-w-md md:max-w-2xl transition-colors duration-300 relative min-h-screen">
+    <!-- Ajustado pt-12 (48px) para compensar o header de 35px + margem -->
+    <main id="main-area" class="pt-12 pb-24 px-4 container mx-auto max-w-md md:max-w-2xl transition-colors duration-300 relative min-h-screen">
         
         <!-- Fullscreen Button -->
         <button id="fullscreen-btn" class="fixed top-20 right-4 z-30 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all transform hover:scale-100 active:scale-90 focus:outline-none scale-85 origin-top-right">
@@ -177,9 +180,11 @@
     </main>
 
     <!-- Bottom Bar -->
-    <nav id="app-bottom-nav" class="fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center z-40 pb-safe transition-colors duration-300">
+    <nav id="app-bottom-nav" class="fixed bottom-0 left-0 right-0 h-[2.35rem] bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center z-40 pb-safe transition-colors duration-300">
         <a href="#" onclick="restoreFeed(); return false;" class="flex flex-col items-center justify-center w-full h-full text-blue-600 dark:text-blue-400 focus:outline-none hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
         </a>
         <button onclick="loadArticle('mapa.html'); return false;" class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -217,8 +222,8 @@
             articleContainer.classList.add('hidden');
             articleContainer.innerHTML = '';
             const main = document.getElementById('main-area');
-            main.classList.add('px-4', 'pt-20');
-            main.classList.remove('pt-16');
+            main.classList.add('px-4', 'pt-12');
+            main.classList.remove('pt-[35px]');
             window.scrollTo(0, 0);
         };
 
@@ -237,9 +242,9 @@
                     articleContainer.classList.remove('hidden');
                     
                     const main = document.getElementById('main-area');
-                    // AJUSTE DE ALINHAMENTO: Remove padding lateral e ajusta topo para casar com header (64px)
-                    main.classList.remove('px-4', 'pt-20');
-                    main.classList.add('pt-16');
+                    // AJUSTE: Remove padding padrão e aplica pt-[35px] para casar com header fixo de 35px
+                    main.classList.remove('px-4', 'pt-12');
+                    main.classList.add('pt-[35px]');
 
                     const backLinks = articleContainer.querySelectorAll('a[href="index.html"]');
                     backLinks.forEach(link => {
@@ -298,15 +303,6 @@
             const activitiesList = document.getElementById('activities-list');
             const loader = document.getElementById('loader');
 
-            function getCurrentDate() {
-                const now = new Date();
-                const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-                const day = String(now.getDate()).padStart(2, '0');
-                const month = months[now.getMonth()];
-                const year = now.getFullYear();
-                return `${day} ${month} ${year}`;
-            }
-
             function createItem(index) {
                 if (index >= 3) {
                     const imageUrl = `https://picsum.photos/800/800?random=${index}`;
@@ -325,7 +321,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-white leading-tight mb-1 drop-shadow-sm line-clamp-2">O Impacto Visual do Item #${index}</h3>
                             <div class="flex items-center text-xs text-gray-300 mb-3">
-                                <span class="mr-1">Por</span><span class="font-semibold text-white mr-3">cultive</span><span>${getCurrentDate()}</span>
+                                <span class="mr-1">Por</span><span class="font-semibold text-white mr-3">cultive</span>
                             </div>
                             <div class="flex justify-between items-center pt-2 border-t border-white/20">
                                 <div class="flex space-x-4">
